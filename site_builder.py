@@ -304,8 +304,6 @@ STYLE_CSS = """:root {
   --ink-faint: #7d7264;
   --rule: #ddd5c8;
   --panel: #eae4d8;
-  --head-bg: var(--head);
-  --accent: var(--accent-light);
   --on-head: #ffffff;
   --on-head-soft: rgba(255,255,255,.72);
   --on-head-faint: rgba(255,255,255,.55);
@@ -320,13 +318,15 @@ STYLE_CSS = """:root {
     --ink-faint: #968c7e;
     --rule: #332e26;
     --panel: #221f19;
-    --head-bg: var(--head-dark);
-    --accent: var(--accent-dark);
     --on-head: #f6f3ee;
     --on-head-soft: rgba(246,243,238,.74);
     --on-head-faint: rgba(246,243,238,.56);
     --head-rule: rgba(246,243,238,.26);
   }
+}
+body { --head-bg: var(--head); --accent: var(--accent-light); }
+@media (prefers-color-scheme: dark) {
+  body { --head-bg: var(--head-dark); --accent: var(--accent-dark); }
 }
 * { box-sizing: border-box; }
 body {
