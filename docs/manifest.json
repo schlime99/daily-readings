@@ -1,0 +1,17 @@
+{
+  "name": "Daily Readings",
+  "short_name": "Readings",
+  "description": "The day's Mass readings, with a reflection",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#faf9f7",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
