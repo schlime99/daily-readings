@@ -7,8 +7,8 @@
   --rule: #ddd5c8;
   --panel: #eae4d8;
   --on-head: #ffffff;
-  --on-head-soft: rgba(255,255,255,.72);
-  --on-head-faint: rgba(255,255,255,.55);
+  --on-head-soft: rgba(255,255,255,.78);
+  --on-head-faint: rgba(255,255,255,.56);
   --head-rule: rgba(255,255,255,.3);
 }
 @media (prefers-color-scheme: dark) {
@@ -21,11 +21,13 @@
     --rule: #332e26;
     --panel: #221f19;
     --on-head: #f6f3ee;
-    --on-head-soft: rgba(246,243,238,.74);
+    --on-head-soft: rgba(246,243,238,.78);
     --on-head-faint: rgba(246,243,238,.56);
     --head-rule: rgba(246,243,238,.26);
   }
 }
+/* These map the per-page colors set inline on <body>. They must live on
+   body, not :root — :root is the parent of body and cannot see them. */
 body { --head-bg: var(--head); --accent: var(--accent-light); }
 @media (prefers-color-scheme: dark) {
   body { --head-bg: var(--head-dark); --accent: var(--accent-dark); }
@@ -55,37 +57,39 @@ body {
 }
 .entry-head {
   background: var(--head-bg); color: var(--on-head);
-  text-align: center; padding: 2rem 1.55rem 1.75rem;
+  text-align: center; padding: 2rem 1.5rem 1.75rem;
 }
 .date {
   font-size: .76rem; font-weight: 600; letter-spacing: .15em;
-  text-transform: uppercase; color: var(--on-head-faint); margin: 0 0 .9rem;
+  text-transform: uppercase; color: var(--on-head-faint); margin: 0 0 1rem;
+}
+.title-lead {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic; font-size: 1.6rem; line-height: 1.2;
+  color: var(--on-head-soft); margin: 0 0 .05rem;
 }
 .entry-head h1 {
-  font-size: 1.7rem; font-weight: 600; line-height: 1.25;
-  color: var(--on-head); margin: 0 0 .35rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.15rem; font-weight: 600; line-height: 1.14;
+  color: var(--on-head); margin: 0;
 }
-.rank {
-  font-style: italic; font-size: 1rem; color: var(--on-head-soft);
-  margin: 0 0 1.1rem;
-}
-.rule { width: 32px; height: 1px; background: var(--head-rule); margin: 1.2rem auto; }
+.rule { width: 34px; height: 1px; background: var(--head-rule); margin: 1.15rem auto; }
 .epigraph {
-  font-style: italic; font-size: 1.14rem; line-height: 1.65;
-  color: var(--on-head-soft); margin: 0 0 1.4rem;
+  font-style: italic; font-size: 1.05rem; line-height: 1.6;
+  color: var(--on-head-soft); margin: 0 0 1.25rem;
 }
 .citations {
   display: inline-block; text-align: left;
-  border-top: .5px solid var(--head-rule); padding-top: 1rem;
+  border-top: .5px solid var(--head-rule); padding-top: .9rem;
 }
-.cite-row { display: flex; gap: .8rem; align-items: baseline; margin-bottom: .3rem; }
+.cite-row { display: flex; gap: .8rem; align-items: baseline; margin-bottom: .28rem; }
 .cite-row:last-child { margin-bottom: 0; }
 .cite-label {
-  flex: 0 0 6.2rem; font-size: .72rem; font-weight: 600;
+  flex: 0 0 5.8rem; font-size: .68rem; font-weight: 600;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--on-head-faint);
 }
-.cite-ref { font-size: .96rem; color: var(--on-head-soft); }
+.cite-ref { font-size: .92rem; color: var(--on-head-soft); }
 .entry-body { padding: 1.7rem 1.55rem 1.6rem; }
 .reflection { font-size: 1.14rem; line-height: 1.8; color: var(--ink); }
 .reflection h2 {
@@ -118,6 +122,7 @@ body {
 }
 .daynav a { color: var(--accent); text-decoration: none; padding: .45rem 0; }
 .nav-today { color: var(--ink-faint); }
+.entry-head h1:only-child { margin-top: .2rem; }
 .month h2 {
   font-size: .78rem; font-weight: 600; letter-spacing: .12em;
   text-transform: uppercase; color: var(--ink-faint); margin: 1.5rem 0 .55rem;
@@ -129,9 +134,7 @@ body {
   display: flex; gap: .8rem; align-items: center; padding: .85rem 0;
   text-decoration: none; color: var(--ink);
 }
-.a-dot {
-  flex: 0 0 7px; width: 7px; height: 7px; border-radius: 50%;
-}
+.a-dot { flex: 0 0 7px; width: 7px; height: 7px; border-radius: 50%; }
 .a-date {
   flex: 0 0 3.5rem; font-size: .9rem; color: var(--ink-faint);
   font-variant-numeric: tabular-nums;
@@ -147,7 +150,8 @@ body {
 @media (min-width: 40rem) {
   .entry-head { padding: 2.5rem 2.8rem 2.1rem; }
   .entry-body { padding: 2.1rem 2.8rem 1.9rem; }
-  .entry-head h1 { font-size: 2rem; }
-  .epigraph { font-size: 1.2rem; }
+  .entry-head h1 { font-size: 2.5rem; }
+  .title-lead { font-size: 1.85rem; }
+  .epigraph { font-size: 1.12rem; }
   .reflection { font-size: 1.18rem; }
 }
