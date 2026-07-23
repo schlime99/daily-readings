@@ -119,12 +119,17 @@ Make it specific to *this* day's texts. Prefer friction: a question a reader mig
 
 Avoid: rhetorical questions with obvious answers; second-person exhortation ("let us remember", "may we learn"); anything printable on a greeting card; anything that resolves the difficulty the reflection just raised.
 
-GOOD: "Where am I still looking in the dark for someone already standing beside me?"
-GOOD: "Who have I decided is not my family?"
-GOOD: "Name the thing you would rather God did not forgive."
-BAD: "What form of him are you holding on to so tightly that you might be missing the one already standing in front of you — the living one, not the one laid in the place you keep looking?"
+The closing must stand on its own. Someone who reads only this sentence — without the reflection, without knowing the day's readings — should understand what is being asked of them. Carry the insight across, not the imagery.
 
-The bad one fails because it says the same thing three times. The good ones stop after saying it once."""
+Test it: if the sentence requires knowing what happened in the Gospel to make sense, rewrite it. Scriptural images ("a body", "the name", "the empty tomb") belong in the reflection, not in the closing. The closing translates what the text found into the reader's own life.
+
+GOOD: "Who have I already decided is beyond forgiving?"
+GOOD: "What am I refusing to recognize because it isn't arriving the way I expected?"
+GOOD: "Name the thing you would rather God did not forgive."
+BAD: "Where am I still looking for a body when a name is already being spoken?"
+BAD: "What form of him are you holding on to so tightly that you might be missing the one already standing in front of you?"
+
+The first bad one fails because it only makes sense if you just read John 20 — it borrows the Gospel's imagery instead of translating it. The second fails because it says the same thing three times."""
 
 
 def generate_reflection(readings_text: str, date: datetime.date) -> dict:
