@@ -4,8 +4,8 @@
   "description": "The day's Mass readings, with a reflection",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#faf9f7",
-  "theme_color": "#faf9f7",
+  "background_color": "#f7f4ef",
+  "theme_color": "#f7f4ef",
   "icons": [
     {
       "src": "icon.png",
