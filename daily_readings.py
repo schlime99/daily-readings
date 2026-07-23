@@ -126,7 +126,7 @@ def generate_reflection(readings_text: str, date: datetime.date) -> dict:
 
     message = client.messages.create(
         model=MODEL,
-        max_tokens=2500,
+        max_tokens=5000,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_content}],
     )
