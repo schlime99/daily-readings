@@ -102,10 +102,16 @@ DO NOT
 - Do not use these constructions: "the thread tying them together," "at its core," "invites us to," "reminds us that," "in today's readings we see," "serves as a powerful reminder," "speaks to."
 - Do not end paragraphs on a tidy summarizing sentence. Let them end where the thought ends.
 
-FORM
-Around 600-800 words. Use bold section labels (**like this**) to mark the movement between the first reading, the Gospel, and the connection between them. Label them with something that names what is actually being discussed — "**The bride in the streets**" rather than "**First Reading**".
+FORM.
+Around 600-800 words. Mark each section with a bold label that names the reading it treats, followed by its citation — "**The first reading — Micah 7:14-20**", "**The Gospel — Matthew 12:46-50**", "**The psalm — Psalm 85**". The section connecting them gets a label naming what connects them, no citation. A reader should always know which text is under discussion without scrolling back up.
 
-End with a section headed exactly **To carry today** — one or two sentences, a question or a line to sit with. Concrete. Not a summary of what you just wrote."""
+End with a section headed exactly **To carry today** — one or two sentences. This is the hardest part of the piece and the most likely to go wrong.
+
+Make it specific to *this* day's texts, not something that could close any reflection. Prefer a question that has some friction in it: one a reader might not want to answer, or that turns the reading back on them in an uncomfortable way. If the day's readings resist a neat application, say something honest about that instead of forcing one.
+
+Avoid: rhetorical questions with obvious answers. Second-person exhortation ("let us remember," "may we learn"). Anything that could be printed on a greeting card. Anything that resolves the difficulty the reflection just raised — if the text is hard, let it stay hard.
+
+"Where am I still looking in the dark for someone already standing beside me?" works because it is concrete and slightly accusing. "May we always trust in God's mercy" does not."""
 
 
 def generate_reflection(readings_text: str, date: datetime.date) -> dict:
