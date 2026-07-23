@@ -23,6 +23,7 @@ import re
 import sys
 import json
 import datetime
+from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
@@ -127,7 +128,7 @@ def generate_reflection(readings_text: str, date: datetime.date) -> dict:
 # Main
 # ---------------------------------------------------------------------------
 def main():
-    today = datetime.date.today()
+    today = datetime.datetime.now(ZoneInfo("America/Denver")).date()
 
     print(f"Fetching readings for {today}...")
     try:
