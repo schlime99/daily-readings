@@ -92,7 +92,11 @@ Mark each section with a bold label naming the reading and its citation — "**T
 
 Start each section somewhere specific: a detail, a difficulty, an image. Never open by announcing what you are about to do.
 
-Write the way a good homilist talks — plainly, concretely, unhurried. Short sentences next to long ones. Say the difficult thing rather than smoothing it over. Trust the reader.
+Write in complete sentences. Not fragments — no stacked one-word or three-word sentences used for emphasis, no "Not this. Not that. Just this." constructions, no standalone beats like "And she knows." That cadence performs insight rather than delivering it, and it is the single most common way this kind of writing goes wrong.
+
+Vary sentence length naturally, the way ordinary careful prose does, but every sentence should have a subject and a verb. If a point seems to need the drama of a fragment to land, the point is not yet strong enough — make the observation more specific instead.
+
+Write the way a thoughtful person explains something they have read closely: plainly, in full sentences, without reaching for effect. Say the difficult thing rather than smoothing it over. Trust the reader.
 
 The tradition's well-worn readings are yours to draw on where they genuinely illuminate the text: the Song of Songs read as the soul and Christ, Mary Magdalene as apostle to the apostles, Jonah as a sign of the resurrection. Use them as the common inheritance they are.
 
