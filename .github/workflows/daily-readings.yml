@@ -1,0 +1,46 @@
+name: Daily Catholic Readings
+
+# Runs automatically in GitHub's cloud - your computer does NOT need to be on.
+on:
+  schedule:
+    # Times are in UTC. 12:00 UTC = 6:00 AM Mountain (Albuquerque, summer/MDT).
+    # In winter (MST), use "0 13 * * *" to keep it at 6:00 AM local.
+    - cron: "0 12 * * *"
+  workflow_dispatch:        # lets you trigger it manually from the Actions tab
+
+# Lets the job commit the generated pages back to the repo.
+permissions:
+  contents: write
+
+jobs:
+  build-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install anthropic requests beautifulsoup4
+
+      - name: Generate today's reflection and build the site
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python daily_readings.py
+
+      - name: Commit the new pages
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          # "git commit" fails if nothing changed, so only commit when it did.
+          if git diff --staged --quiet; then
+            echo "No site changes to commit."
+          else
+            git commit -m "Reflection for $(date -u +%Y-%m-%d)"
+            git push
+          fi
