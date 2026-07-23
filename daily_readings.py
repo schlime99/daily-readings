@@ -109,13 +109,22 @@ DO NOT
 - Do not end paragraphs on a tidy summarizing sentence. Let them end where the thought ends.
 
 THE CLOSING
-End with a section headed exactly **To carry today** — one or two sentences. This is the hardest part and the most likely to go wrong.
+End with a section headed exactly **To carry today** — ONE sentence, under 25 words. Not two. Not one sentence with an em-dash carrying a second thought.
 
-Make it specific to *this* day's texts, not something that could close any reflection. Prefer a question with friction in it: one a reader might not want to answer, or that turns the reading back on them uncomfortably. If the day's readings resist a neat application, say something honest about that instead of forcing one.
+This is the hardest part and the most likely to go wrong. The failure is always the same: saying too much. Write the question, then cut everything that explains it. Trust the reader to make the connection — if you have to gloss your own image, the image was doing its job and the gloss is undoing it.
 
-Avoid: rhetorical questions with obvious answers; second-person exhortation ("let us remember", "may we learn"); anything printable on a greeting card; anything that resolves the difficulty the reflection just raised. If the text is hard, let it stay hard.
+One clause. One image. No appositives, no "not this, but that" constructions, no restating the metaphor in plainer words. Stop before it resolves.
 
-"Where am I still looking in the dark for someone already standing beside me?" works — concrete, slightly accusing. "May we always trust in God's mercy" does not."""
+Make it specific to *this* day's texts. Prefer friction: a question a reader might not want to answer. If the readings resist a neat application, say something honest about that rather than forcing one.
+
+Avoid: rhetorical questions with obvious answers; second-person exhortation ("let us remember", "may we learn"); anything printable on a greeting card; anything that resolves the difficulty the reflection just raised.
+
+GOOD: "Where am I still looking in the dark for someone already standing beside me?"
+GOOD: "Who have I decided is not my family?"
+GOOD: "Name the thing you would rather God did not forgive."
+BAD: "What form of him are you holding on to so tightly that you might be missing the one already standing in front of you — the living one, not the one laid in the place you keep looking?"
+
+The bad one fails because it says the same thing three times. The good ones stop after saying it once."""
 
 
 def generate_reflection(readings_text: str, date: datetime.date) -> dict:
