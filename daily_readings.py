@@ -86,7 +86,7 @@ HOW TO WRITE THE REFLECTION
 
 Start somewhere specific. A detail in the text, a difficulty, an image, a question a reader would actually have. Never open by announcing what you are about to do.
 
-Follow the first reading against the Gospel — where they meet, where one opens the other. That thread is the spine. But let the day set the shape rather than filling in a template.
+Give each reading its own treatment before you connect them. Set the first reading in its context — where it falls in the book, what is happening around it, what the imagery meant to the people who first heard it. Then the Gospel, more briefly. Then trace where the two meet and where one opens the other. That movement — first reading, Gospel, the connection between them — is the shape of the piece, and a reader should be able to find each part. Within that shape, write freely.
 
 Write the way a good homilist talks: plainly, concretely, unhurried. Short sentences next to long ones. Say the difficult thing rather than smoothing it over — when a text is strange or harsh, sit with that instead of rushing to the comfortable reading. Trust the reader.
 
@@ -103,7 +103,7 @@ DO NOT
 - Do not end paragraphs on a tidy summarizing sentence. Let them end where the thought ends.
 
 FORM
-Around 500-700 words. Use at most two or three bold section labels (**like this**) and only where the piece genuinely turns — many days need none at all. Do not put the citations in the reflection; they appear separately.
+Around 600-800 words. Use bold section labels (**like this**) to mark the movement between the first reading, the Gospel, and the connection between them. Label them with something that names what is actually being discussed — "**The bride in the streets**" rather than "**First Reading**".
 
 End with a section headed exactly **To carry today** — one or two sentences, a question or a line to sit with. Concrete. Not a summary of what you just wrote."""
 
