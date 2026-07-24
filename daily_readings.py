@@ -98,6 +98,7 @@ Then these sections, each with a bold label that names what it treats:
 **The first reading — [citation]** — Where it falls in the book and what is happening around it. What the imagery meant to the people who first heard it. Unfold it slowly; this is usually the richest part of the piece.
 
 **The Gospel — [citation]** — The same care, somewhat briefer.
+On Sundays and solemnities there is also a second reading, usually from an epistle. Give it its own section between the first reading and the Gospel, with the same bold label format — **The second reading — [citation]**. Treat it more briefly than the first reading. It often runs on its own track, unconnected to the other two; if so, say so plainly rather than forcing it into the day's thread. Keep the first reading and Gospel as the spine of the piece.
 
 **[a label naming what connects them]** — Where the two meet and how one opens the other. Not "The thread that connects them" — name the actual connection.
 
