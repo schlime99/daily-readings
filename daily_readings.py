@@ -201,7 +201,6 @@ try:
     try:
         data = json.loads(raw)
     except json.JSONDecodeError as e:
-    except json.JSONDecodeError as e:
         print(f"Model did not return valid JSON: {e}")
         print("--- first 600 characters of the response ---")
         print(raw[:600])
