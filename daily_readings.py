@@ -70,7 +70,7 @@ SYSTEM_PROMPT = """You write a daily reflection on the Catholic Mass readings fo
 
 Return ONLY a valid JSON object — no preamble, no code fences — with these keys. Every key is required.
 
-The "reflection" value is a single JSON string containing markdown. Every line break inside it must be escaped as \\n — a literal newline inside a JSON string is invalid and will break the response. Paragraph breaks are \\n\\n.
+CRITICAL FORMATTING RULE: the "reflection" value is a single JSON string containing markdown. Every line break inside it MUST be escaped as \\n. A literal newline inside a JSON string is invalid and breaks the whole response. Paragraph breaks are \\n\\n. This applies to every string value, not only the reflection.
 
 "liturgical_day" — the full name of the day as plain text. "Feast of Saint Mary Magdalene". "Thursday of the Sixteenth Week in Ordinary Time". "Memorial of Saint Apollinaris, Bishop and Martyr".
 
@@ -141,6 +141,43 @@ BAD: "Where am I still looking for a body when a name is already being spoken?" 
 BAD: "May we always trust in God's mercy." — a sentiment, not something a reader can do."""
 
 
+def _escape_newlines_in_strings(raw: str) -> str:
+    """
+    Models sometimes emit real newlines inside JSON string values, which is
+    invalid JSON. Walk the text tracking whether we are inside a string and
+    escape any control characters found there. Anything outside a string is
+    left untouched, so already-valid JSON passes through unchanged.
+    """
+    out = []
+    in_string = False
+    escaped = False
+
+    for ch in raw:
+        if escaped:
+            out.append(ch)
+            escaped = False
+            continue
+        if ch == "\\":
+            out.append(ch)
+            escaped = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+            out.append(ch)
+            continue
+        if in_string and ch == "\n":
+            out.append("\\n")
+            continue
+        if in_string and ch == "\r":
+            continue
+        if in_string and ch == "\t":
+            out.append("\\t")
+            continue
+        out.append(ch)
+
+    return "".join(out)
+
+
 def generate_reflection(readings_text: str, date: datetime.date) -> dict:
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 
@@ -166,45 +203,21 @@ def generate_reflection(readings_text: str, date: datetime.date) -> dict:
     raw = re.sub(r"^```(?:json)?\s*", "", raw)
     raw = re.sub(r"\s*```$", "", raw).strip()
 
-    # Fail loudly rather than publishing a broken page. A red X in the
-    # Actions tab is far better than raw JSON on a page the family reads.
-try:
-        data = json.loads(raw)
-    except json.JSONDecodeError:
-        # Models sometimes emit real newlines inside JSON strings, which is
-        # invalid. Escape any control characters that fall inside quotes.
-        repaired, in_string, escaped = [], False, False
-        for ch in raw:
-            if escaped:
-                repaired.append(ch)
-                escaped = False
-                continue
-            if ch == "\\":
-                repaired.append(ch)
-                escaped = True
-                continue
-            if ch == '"':
-                in_string = not in_string
-                repaired.append(ch)
-                continue
-            if in_string and ch == "\n":
-                repaired.append("\\n")
-                continue
-            if in_string and ch == "\r":
-                continue
-            if in_string and ch == "\t":
-                repaired.append("\\t")
-                continue
-            repaired.append(ch)
-        raw = "".join(repaired)
-
+    data = None
     try:
         data = json.loads(raw)
-    except json.JSONDecodeError as e:
-        print(f"Model did not return valid JSON: {e}")
-        print("--- first 600 characters of the response ---")
-        print(raw[:600])
-        sys.exit(1)
+    except json.JSONDecodeError:
+        print("First JSON parse failed; attempting to repair line breaks...")
+        try:
+            data = json.loads(_escape_newlines_in_strings(raw))
+            print("Repair succeeded.")
+        except json.JSONDecodeError as e:
+            # Fail loudly rather than publishing a broken page. A red X in
+            # the Actions tab beats raw JSON on a page the family reads.
+            print(f"Model did not return valid JSON: {e}")
+            print("--- first 600 characters of the response ---")
+            print(raw[:600])
+            sys.exit(1)
 
     if not data.get("reflection"):
         sys.exit("Response parsed but contained no 'reflection'.")
