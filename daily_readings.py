@@ -70,6 +70,8 @@ SYSTEM_PROMPT = """You write a daily reflection on the Catholic Mass readings fo
 
 Return ONLY a valid JSON object — no preamble, no code fences — with these keys. Every key is required.
 
+The "reflection" value is a single JSON string containing markdown. Every line break inside it must be escaped as \\n — a literal newline inside a JSON string is invalid and will break the response. Paragraph breaks are \\n\\n.
+
 "liturgical_day" — the full name of the day as plain text. "Feast of Saint Mary Magdalene". "Thursday of the Sixteenth Week in Ordinary Time". "Memorial of Saint Apollinaris, Bishop and Martyr".
 
 "title_lead" — the FIRST part of that name, set in italics above the main line. The introductory phrase, not the substance: "Feast of", "Memorial of", "Thursday of the", "Optional memorial of". Use null if the name has no natural lead-in.
@@ -166,8 +168,39 @@ def generate_reflection(readings_text: str, date: datetime.date) -> dict:
 
     # Fail loudly rather than publishing a broken page. A red X in the
     # Actions tab is far better than raw JSON on a page the family reads.
+try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        # Models sometimes emit real newlines inside JSON strings, which is
+        # invalid. Escape any control characters that fall inside quotes.
+        repaired, in_string, escaped = [], False, False
+        for ch in raw:
+            if escaped:
+                repaired.append(ch)
+                escaped = False
+                continue
+            if ch == "\\":
+                repaired.append(ch)
+                escaped = True
+                continue
+            if ch == '"':
+                in_string = not in_string
+                repaired.append(ch)
+                continue
+            if in_string and ch == "\n":
+                repaired.append("\\n")
+                continue
+            if in_string and ch == "\r":
+                continue
+            if in_string and ch == "\t":
+                repaired.append("\\t")
+                continue
+            repaired.append(ch)
+        raw = "".join(repaired)
+
     try:
         data = json.loads(raw)
+    except json.JSONDecodeError as e:
     except json.JSONDecodeError as e:
         print(f"Model did not return valid JSON: {e}")
         print("--- first 600 characters of the response ---")
