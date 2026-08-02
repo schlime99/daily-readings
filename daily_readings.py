@@ -52,7 +52,7 @@ if not ANTHROPIC_API_KEY:
 # ---------------------------------------------------------------------------
 def fetch_readings(date: datetime.date) -> str:
     """Pull the day's readings from the USCCB daily-reading page."""
-    url = f"https://bible.usccb.org/bible/readings/{date.strftime('%m%d%y')}.cfm"
+    url = f"https://bible.usccb.org/daily-bible-reading"
     headers = {"User-Agent": "Mozilla/5.0 (daily-readings-script)"}
 
     resp = requests.get(url, headers=headers, timeout=30)
